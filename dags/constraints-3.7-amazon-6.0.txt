@@ -558,3 +558,4 @@ slackclient>=1.0.0,<2.0.0
 oauth2client==4.1.3
 virtualenv>=15.0.0,<16.6.2
 google-cloud-storage>=1.15.0,<1.16.2
+unixodbc-dev
