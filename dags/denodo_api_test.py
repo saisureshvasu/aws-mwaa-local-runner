@@ -51,7 +51,7 @@ try:
         dag=dag
     )
 
-    start >> stop #>> pyOp 
+    start >> pyOp >>stop  
 
 except Exception as ex:
     log.error("Airflow DAG Exception: denodo_api_test failed")
