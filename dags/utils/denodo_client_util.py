@@ -4,10 +4,10 @@ import urllib3
 urllib3.disable_warnings()
 log = logging.getLogger(__name__)
 
-#import pyodbc
+import pyodbc
 
 
 def test_odbc():
-    pass
-    #print([x for x in pyodbc.drivers() if x.endswith(' for SQL Server')])
+    
+    print([x for x in pyodbc.drivers() if x.endswith(' for SQL Server')])
     
