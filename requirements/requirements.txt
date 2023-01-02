@@ -1,17 +1,5 @@
---constraint "/usr/local/airflow/dags/constraints-3.7-amazon-6.0.txt"
 
-apache-airflow-providers-amazon==6.0.0
-apache-airflow-providers-snowflake==1.3.0
-snowflake-connector-python==2.4.6
-boto3<1.18.0,>=1.15.0
-openpyxl==3.0.9
-XlsxWriter==3.0.2
-apache-airflow-providers-google==2.2.0
-simple-salesforce==0.74.2
-paramiko==2.10.4
-cron-descriptor==1.2.32
-nzpy==1.15
-smbprotocol==1.10.1
+
 pyodbc==4.0.35
 apache-airflow-providers-common-sql==1.3.1
 apache-airflow-providers-odbc==3.2.1
