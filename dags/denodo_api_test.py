@@ -17,8 +17,7 @@ try:
             'depends_on_past': False,
             'email_on_failure': False,
             'email_on_success':True,
-            'email': email_list,
-            'on_failure_callback': send_custom_failure_email
+            'email': email_list
             
         }
     catchup=False
