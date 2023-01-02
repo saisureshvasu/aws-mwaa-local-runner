@@ -4,8 +4,6 @@ from airflow.utils.dates import days_ago
 from airflow import DAG
 from utils.denodo_client_util import test_odbc
 import logging
-#from utils.denodo_client_util import test_odbc
-from utils.email_util import send_custom_failure_email
 
 log = logging.getLogger(__name__)
 
