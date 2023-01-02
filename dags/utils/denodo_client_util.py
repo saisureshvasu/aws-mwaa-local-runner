@@ -4,7 +4,6 @@ import urllib3
 urllib3.disable_warnings()
 log = logging.getLogger(__name__)
 
-import smbclient
 import pyodbc
 
 
