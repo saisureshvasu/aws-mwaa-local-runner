@@ -7,8 +7,8 @@ log = logging.getLogger(__name__)
 from utils.mock_endpoints import *
 from utils.sm_util import SMUtil
 from utils.parse_variable import get_variable
-# import smbclient
-# import pyodbc
+import smbclient
+import pyodbc
 
 SM_SECRET_ID_NAME = 'pf-aas-airflow-{}/connections/denodo_sm'.format(get_variable("env"))
 
@@ -193,60 +193,60 @@ def denodo_fetch_object_dependency():
         raise ex
 
 
-# def test_file():
+def test_file():
    
-#     try :
-#         fd = smbclient.open_file(r"\\pfinfodev01\SourceFiles\TM1\TM1_Admin_Module.csv", mode="r")
-#         data = fd.read()
-#         print(data)
-#     except Exception as ex:
-#         print(ex)
+    try :
+        fd = smbclient.open_file(r"\\pfinfodev01\SourceFiles\TM1\TM1_Admin_Module.csv", mode="r")
+        data = fd.read()
+        print(data)
+    except Exception as ex:
+        print(ex)
 
 
-#     try :
-#         fd = smbclient.open_file(r"\\10.50.32.5\SourceFiles\TM1\TM1_Admin_Module.csv", mode="r")
-#         data = fd.read()
-#         print(data)
-#     except Exception as ex:
-#         print(ex)
+    try :
+        fd = smbclient.open_file(r"\\10.50.32.5\SourceFiles\TM1\TM1_Admin_Module.csv", mode="r")
+        data = fd.read()
+        print(data)
+    except Exception as ex:
+        print(ex)
 
-# def test_odbc():
-#     smUtil = SMUtil.instance()
-#     login_info = smUtil.read_from_aws_sm_fn("pf-aas-airflow-nonprod/connections/outbound_sm")
-#     """converting string to dict for accessing the keys and values if the login_info is not null
-#     """
-#     if (login_info):
-#         login_info = json.loads(login_info)
-#         server,  username, password = login_info['server'], login_info['r_username'], login_info['r_password']
+def test_odbc():
+    smUtil = SMUtil.instance()
+    login_info = smUtil.read_from_aws_sm_fn("pf-aas-airflow-nonprod/connections/outbound_sm")
+    """converting string to dict for accessing the keys and values if the login_info is not null
+    """
+    if (login_info):
+        login_info = json.loads(login_info)
+        server,  username, password = login_info['server'], login_info['r_username'], login_info['r_password']
     
-#     database = 'PF_CCM_Live' 
-#     print([x for x in pyodbc.drivers() if x.endswith(' for SQL Server')])
-#     cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';ENCRYPT=yes;UID='+username+';PWD='+ password+';Trusted_Connection=no', autocommit=True)
-#     cnxn.set_attr(pyodbc.SQL_ATTR_TXN_ISOLATION, pyodbc.SQL_TXN_READ_UNCOMMITTED)
-#     # changing the isolation level because default is not READ UNCOMMITTED
-#     # https://github.com/mkleehammer/pyodbc/wiki/Database-Transaction-Management
-#     # https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql
-#     # For windows authentication you need to put Trusted_Connection=yes; and for password authentication it needs to be false
-#     cursor = cnxn.cursor()
+    database = 'PF_CCM_Live' 
+    print([x for x in pyodbc.drivers() if x.endswith(' for SQL Server')])
+    cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';ENCRYPT=yes;UID='+username+';PWD='+ password+';Trusted_Connection=no', autocommit=True)
+    cnxn.set_attr(pyodbc.SQL_ATTR_TXN_ISOLATION, pyodbc.SQL_TXN_READ_UNCOMMITTED)
+    # changing the isolation level because default is not READ UNCOMMITTED
+    # https://github.com/mkleehammer/pyodbc/wiki/Database-Transaction-Management
+    # https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql
+    # For windows authentication you need to put Trusted_Connection=yes; and for password authentication it needs to be false
+    cursor = cnxn.cursor()
 
-#     cursor.execute("""SELECT top 3
-#             F1.ABCID AS CLUBID
-#             , F1.WEBPAYMENTPLANID AS PlanID
-#             , F1.MANDATORYOFFER
-#             , F1.STARTUPFEE
-#             , F1.MONTHLYFEE
-#             , F1.YEARLYFEE
-#             , F1.MEMBERSHIPTYPEID
-#             , SUBSTRING( F1.ABCTITLE, 1, 200) AS ABCTitle
-#             , F1.UPGRADEOFFER
-#             , F1.PROPOSED_SPECIALOFFER
-#             , F1.PFDELETED
-#             , F1.ABCDELETED
-#             , F1.APPROVALSTATUS
-#         FROM FMT F1""") 
-#     row = cursor.fetchone() 
-#     while row: 
-#         print(row[0])
-#         row = cursor.fetchone()
-#     cursor.close()
-#     cnxn.close()
+    cursor.execute("""SELECT top 3
+            F1.ABCID AS CLUBID
+            , F1.WEBPAYMENTPLANID AS PlanID
+            , F1.MANDATORYOFFER
+            , F1.STARTUPFEE
+            , F1.MONTHLYFEE
+            , F1.YEARLYFEE
+            , F1.MEMBERSHIPTYPEID
+            , SUBSTRING( F1.ABCTITLE, 1, 200) AS ABCTitle
+            , F1.UPGRADEOFFER
+            , F1.PROPOSED_SPECIALOFFER
+            , F1.PFDELETED
+            , F1.ABCDELETED
+            , F1.APPROVALSTATUS
+        FROM FMT F1""") 
+    row = cursor.fetchone() 
+    while row: 
+        print(row[0])
+        row = cursor.fetchone()
+    cursor.close()
+    cnxn.close()
