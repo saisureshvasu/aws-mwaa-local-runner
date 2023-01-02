@@ -13,3 +13,4 @@ cron-descriptor==1.2.32
 nzpy==1.15
 smbprotocol==1.10.1
 apache-airflow-providers-odbc==2.0.2
+pyodbc==4.0.35
