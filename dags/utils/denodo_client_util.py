@@ -8,6 +8,7 @@ import pyodbc
 
 
 def test_odbc():
-    pass
-    #print([x for x in pyodbc.drivers() if x.endswith(' for SQL Server')])
+    #pass
+    print(pyodbc.version)
+    print([x for x in pyodbc.drivers()])
     
