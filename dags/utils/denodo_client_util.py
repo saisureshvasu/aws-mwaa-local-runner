@@ -4,7 +4,7 @@ import urllib3
 urllib3.disable_warnings()
 log = logging.getLogger(__name__)
 
-#import pyodbc
+import pyodbc
 
 
 def test_odbc():
