@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 try:
     dag_paused = False
-    email_list = ['john.eipe@siriuscom.com']
+    email_list = ['saisuresh.vasu@cdw.com']
     default_args = {
             'owner': 'airflow',
             'depends_on_past': False,
