@@ -137,3 +137,7 @@ Werkzeug==1.0.1
 WTForms==2.3.3
 zipp==3.6.0
 pip==21.3.1
+apache-airflow-providers-microsoft-mssql==1.0.1
+apache-airflow-providers-odbc==1.0.1
+pymssql==2.2.1
+pyodbc==4.0.35
