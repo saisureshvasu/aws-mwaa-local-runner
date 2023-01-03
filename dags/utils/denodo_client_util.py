@@ -11,5 +11,4 @@ def test_odbc():
     #pass
     print(pyodbc.version)
     print([x for x in pyodbc.drivers()])
-    print([x for x in pymssql.drivers()])
     
